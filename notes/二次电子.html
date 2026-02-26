@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM 扫描电镜完整学习笔记（二次电子+数据获取）</title>
+    <style>
+        /* 全局样式：适配电脑/手机，字体清晰 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        /* 标题样式：层级分明 */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        h2 {
+            color: #2980b9;
+            margin: 25px 0 15px 0;
+            padding-left: 10px;
+            border-left: 4px solid #3498db;
+        }
+        h3 {
+            color: #34495e;
+            margin: 20px 0 10px 0;
+        }
+        /* 段落、列表样式 */
+        p {
+            margin: 10px 0;
+            text-indent: 2em;
+        }
+        ul, ol {
+            padding-left: 40px;
+            margin: 10px 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        /* 表格样式：清晰易读 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        /* 链接样式：醒目不刺眼 */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #e74c3c;
+        }
+        /* 重点内容高亮 */
+        .highlight {
+            background-color: #fff8e1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        /* 分隔线 */
+        hr {
+            border: none;
+            border-top: 1px dashed #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>SEM 扫描电镜完整学习笔记</h1>
+
+    <h2>一、SEM 二次电子（SE）形貌测试原理</h2>
+
+    <h3>1. 二次电子核心定义</h3>
+    <p>二次电子（Secondary Electron，SE）是<span class="highlight">入射电子束</span>轰击样品表面时，样品中原子的<span class="highlight">核外价电子</span>受到激发，获得足够能量后脱离原子成为的自由电子，是 SEM 形貌观察中最常用的信号。</p>
+    <p>其能量较低，一般小于 50eV，产生深度极浅（样品表面 0~10nm 范围内），对样品表面的微观形貌变化极其敏感。</p>
+
+    <h3>2. 二次电子的产生机制</h3>
+    <ol>
+        <li>入射电子束与样品表面原子的价电子发生<span class="highlight">非弹性散射</span>，价电子吸收散射能量，克服原子核的束缚力；</li>
+        <li>获得足够能量的价电子脱离原子，从样品表面逸出，形成二次电子；</li>
+        <li>若价电子吸收的能量不足，无法逸出样品表面，则仅发生原子的电离或激发，不产生二次电子信号。</li>
+    </ol>
+
+    <h3>3. 二次电子用于形貌观察的核心优势</h3>
+    <ul>
+        <li><strong>分辨率高</strong>：产生深度仅在样品表面 10nm 以内，常规 SEM 下二次电子像分辨率可达 1~3nm，能清晰观察纳米级微观形貌（如颗粒、晶界、台阶）；</li>
+        <li><strong>形貌衬度极强</strong>：二次电子产额与样品表面倾斜角度相关——凸起/棱边/尖角处更亮，凹陷/孔洞/背向处更暗，可还原三维形貌；</li>
+        <li><strong>成像视野清晰</strong>：信号收集效率高，信噪比好，无明显拖影，细节呈现完整。</li>
+    </ul>
+
+    <h3>4. 二次电子信号的收集与成像过程</h3>
+    <ol>
+        <li><strong>信号产生</strong>：入射电子束在样品表面逐点扫描，激发产生二次电子；</li>
+        <li><strong>信号收集</strong>：E-T 探测器加 +200~+500V 正高压，吸引低能二次电子并转化为电信号；</li>
+        <li><strong>信号放大</strong>：电信号经前置放大器、主放大器逐级放大；</li>
+        <li><strong>成像显示</strong>：放大后的电信号同步控制显示器亮度，扫描轨迹严格同步，还原样品形貌像。</li>
+    </ol>
+
+    <h3>5. 二次电子与背散射电子（BSE）核心区别</h3>
+    <table>
+        <tr>
+            <th>特征</th>
+            <th>二次电子（SE）</th>
+            <th>背散射电子（BSE）</th>
+        </tr>
+        <tr>
+            <td>能量</td>
+            <td>低，&lt;50eV</td>
+            <td>高，接近入射电子能量</td>
+        </tr>
+        <tr>
+            <td>产生深度</td>
+            <td>浅，0~10nm</td>
+            <td>深，100~1000nm</td>
+        </tr>
+        <tr>
+            <td>核心作用</td>
+            <td>形貌分析，分辨率高</td>
+            <td>成分/衬度分析，分辨率低</td>
+        </tr>
+        <tr>
+            <td>产额影响因素</td>
+            <td>样品表面倾斜角度</td>
+            <td>样品原子序数（Z）</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>二、SEM 图像数据获取实操步骤</h2>
+
+    <h3>1. 从 Materials Project 获取锂电池正极 SEM 图</h3>
+    <ol>
+        <li>打开新版官网：<a href="https://next-gen.materialsproject.org/" target="_blank">https://next-gen.materialsproject.org/</a>（无需注册）；</li>
+        <li>搜索框输入精准关键词：LiCoO2 SEM / NCM SEM / lithium battery cathode particle SEM；</li>
+        <li>左侧筛选「Media/Images」分类，仅显示带 SEM 图的结果；</li>
+        <li>选择带<span class="highlight">比例尺</span>的颗粒图，右键「图片另存为」保存到本地。</li>
+    </ol>
+
+    <h3>2. 从 nbsdc.cn 获取金颗粒 SEM 图</h3>
+    <ol>
+        <li>访问链接：<a href="https://www.nbsdc.cn/general/dataSetHome#" target="_blank">https://www.nbsdc.cn/general/dataSetHome#</a>，完成免费注册/登录；</li>
+        <li>搜索「金颗粒 15nm SEM」「金颗粒 50nm SEM」，加入购物车；</li>
+        <li>打开购物车（菜单按钮 → 购物车 或 直接访问 <a href="https://www.nbsdc.cn/general/shoppingCart" target="_blank">https://www.nbsdc.cn/general/shoppingCart</a>）；</li>
+        <li>勾选文件后点击下载，将图片整理到指定路径：<span class="highlight">data/raw_sem/metal</span>；</li>
+        <li>重命名文件：SEM-金属颗粒-01.jpg（15nm）、SEM-金属颗粒-02.jpg（50nm）。</li>
+    </ol>
+
+    <hr>
+
+    <h2>三、SEM 测试实操注意事项</h2>
+    <ul>
+        <li><strong>样品处理</strong>：非导电样品（陶瓷/高分子/粉体）需喷金/喷碳，避免电荷积累；样品表面需清洁无杂质；</li>
+        <li><strong>电压选择</strong>：纳米级精细形貌选 5~10kV 低电压，大尺寸宏观形貌选 20~30kV 高电压；</li>
+        <li><strong>工作距离</strong>：常规 5~15mm，距离越小分辨率越高；</li>
+        <li><strong>环境要求</strong>：常规测试在高真空环境，软质/易损样品可选用低真空/湿环境 SEM。</li>
+    </ul>
+
+    <hr>
+
+    <h2>四、常见问题排查</h2>
+    <ul>
+        <li>无法打开购物车：优先点击页面右上角蓝色菜单按钮，或直接访问购物车专属链接；</li>
+        <li>Materials Project 解析失败：换新版地址 <a href="https://next-gen.materialsproject.org/" target="_blank">https://next-gen.materialsproject.org/</a>；</li>
+        <li>SEM 图无比例尺：下载前确认图片标注「scale bar」「μm/nm」，无比例尺的图不建议使用；</li>
+        <li>文件路径错误：Windows 路径示例 D:\项目名\data\raw_sem\metal，macOS/Linux 路径示例 /Users/用户名/项目名/data/raw_sem/metal。</li>
+    </ul>
+</body>
+</html>

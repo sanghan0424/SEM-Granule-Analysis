@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM知识点 - 工作距离与加速电压</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            color: #2c3e50;
+            background: #f9f9f9;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #1a2530;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #e9f5fd;
+            font-weight: bold;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .tip {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #27ae60;
+            margin: 20px 0;
+        }
+        .key {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SEM扫描电子显微镜知识点</h1>
+
+        <h2>学习资源</h2>
+        <p>课程链接：<a href="https://www.bilibili.com/video/BV1z24y1Q767/?share_source=copy_web&vd_source=867ea4e508582eb6ddd2eb3668f2cce5" target="_blank">【今天学什么？—工作距离与加速电压】</a></p>
+
+        <h2>工作距离（Working Distance, WD）</h2>
+        <h3>核心定义</h3>
+        <p>工作距离是指SEM电子枪探头（物镜下端）到样品表面的垂直距离，单位通常为毫米（mm）。</p>
+        <h3>核心规律（视频重点）</h3>
+        <ul>
+            <li><span class="key">核心</span>：工作距离越小，图像分辨率越高，适合细颗粒观察；</li>
+            <li>工作距离越大，视野更广、景深更大，适合粗糙样品整体观察，但分辨率降低；</li>
+            <li>实操：新手建议先从10-15mm中等距离调试，避免探头碰撞样品。</li>
+        </ul>
+
+        <h2>加速电压（Accelerating Voltage）</h2>
+        <h3>核心定义</h3>
+        <p>加速电压是推动电子束的能量大小，单位为千伏（kV），决定电子束的穿透能力和成像质量。</p>
+        <h3>选择原则（视频重点）</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>样品类型</th>
+                    <th>推荐加速电压范围</th>
+                    <th>原因说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>金属颗粒</strong></td>
+                    <td><strong>10–20 kV</strong></td>
+                    <td>导电性好，高电压分辨率高，可观察晶界、裂纹等精细结构；</td>
+                </tr>
+                <tr>
+                    <td><strong>软材料</strong>（聚合物/生物样本等）</td>
+                    <td><strong>5–10 kV</strong></td>
+                    <td>减少热损伤和电荷积累，避免样品变形/碳化；</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>其他注意事项（视频补充）</h3>
+        <ul>
+            <li>高电压（>20 kV）：穿透力强，但易损伤样品表面；</li>
+            <li>低电压（<5 kV）：适配绝缘体，但信号弱，需高灵敏探测器；</li>
+            <li>实操：初学者优先选10 kV基准值，再逐步调整。</li>
+        </ul>
+
+        <div class="tip">
+            💡 学习提示：结合视频03:15-08:40的实操演示，可直观理解不同参数的成像差异。
+        </div>
+    </div>
+</body>
+</html>

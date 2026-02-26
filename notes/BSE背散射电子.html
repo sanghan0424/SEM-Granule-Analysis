@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背散射电子（BSE）学习笔记 | 2026-02-21</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #28a745;
+        }
+        .header h1 {
+            color: #2c3e50;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+        .course-link {
+            color: #28a745;
+            font-size: 16px;
+            margin: 8px 0;
+            display: block;
+        }
+        .course-link a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .course-link a:hover {
+            text-decoration: underline;
+        }
+        .date {
+            color: #666;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        h2 {
+            color: #28a745;
+            margin: 25px 0 12px 0;
+            padding-left: 10px;
+            border-left: 4px solid #28a745;
+            font-size: 20px;
+        }
+        h3 {
+            color: #34495e;
+            margin: 18px 0 8px 0;
+            font-size: 17px;
+        }
+        p {
+            margin: 10px 0;
+            text-indent: 2em;
+        }
+        ul, ol {
+            padding-left: 40px;
+            margin: 10px 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: Consolas, monospace;
+            color: #d63384;
+        }
+        .highlight {
+            background-color: #d4edda;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .tip {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0078d4;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #28a745;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>背散射电子（BSE）概念与影响因素学习笔记</h1>
+        <div class="course-link">课程链接：<a href="https://www.bilibili.com/video/BV1nXG2z2Ew7?vd_source=867ea4e508582eb6ddd2eb3668f2cce5" target="_blank">1.2背散射电子概念、影响因素</a></div>
+        <div class="date">2026年02月21日 星期六</div>
+    </div>
+
+    <h2>一、背散射电子（BSE）核心定义</h2>
+    <p>背散射电子（Backscattered Electron，BSE）是入射电子束轰击样品时，被样品原子核<span class="highlight">弹性散射</span>后反向逸出样品表面的高能电子，也被称为“反向散射电子”。</p>
+    <ul>
+        <li>能量特征：能量高，接近入射电子束的初始能量（通常为keV级别），远高于二次电子（&lt;50eV）；</li>
+        <li>产生深度：产生于样品表面<span class="highlight">100~1000nm</span>的深层区域，穿透能力强；</li>
+        <li>核心作用：主要用于样品<span class="highlight">成分分析、原子序数衬度观察</span>，辅助形貌分析。</li>
+    </ul>
+
+    <h2>二、背散射电子的产生机制</h2>
+    <ol>
+        <li>入射高能电子束与样品中原子的原子核发生<strong>弹性碰撞</strong>（无能量损失）；</li>
+        <li>入射电子的运动方向发生大角度偏转（≥90°），甚至完全反向；</li>
+        <li>偏转后的电子克服样品表面的逸出功，从样品表面反向逸出，形成背散射电子。</li>
+    </ol>
+    <div class="tip">
+        <strong>💡 关键区别：</strong>二次电子是入射电子与核外价电子的非弹性散射产生，背散射电子是与原子核的弹性散射产生。
+    </div>
+
+    <h2>三、背散射电子产额的核心影响因素</h2>
+    <h3>1. 样品原子序数（Z）（最核心因素）</h3>
+    <p>背散射电子的产额与样品原子序数呈<strong>正相关</strong>：</p>
+    <ul>
+        <li>原子序数高的元素（如Au、Pt、Pb）：核电荷数大，对入射电子的散射能力强，背散射电子产额高，成像时区域更亮；</li>
+        <li>原子序数低的元素（如C、O、Al）：核电荷数小，散射能力弱，背散射电子产额低，成像时区域更暗；</li>
+        <li>应用：利用“原子序数衬度”可区分样品中不同成分的区域（如合金中的相分布、复合材料的组分分布）。</li>
+    </ul>
+
+    <h3>2. 入射电子束能量</h3>
+    <p>入射电子束能量越高，背散射电子的产额略有上升，但影响远小于原子序数：</p>
+    <ul>
+        <li>低能入射（如5kV）：背散射电子产额低，信号弱，分辨率略高；</li>
+        <li>高能入射（如20~30kV）：背散射电子产额高，信号强，穿透深度更深，适合厚样品/深层成分分析。</li>
+    </ul>
+
+    <h3>3. 样品表面倾斜角度</h3>
+    <p>样品表面与入射电子束的夹角越大，背散射电子逸出概率越高：</p>
+    <ul>
+        <li>表面凸起/棱边：电子易反向逸出，产额略高；</li>
+        <li>表面凹陷/孔洞：电子易被样品自身遮挡，产额略低；</li>
+        <li>注意：该因素影响远小于原子序数，因此背散射电子的“形貌衬度”弱于二次电子。</li>
+    </ul>
+
+    <h3>4. 样品密度与晶体结构（次要因素）</h3>
+    <ul>
+        <li>密度高的样品：原子排列紧密，入射电子与原子核碰撞概率高，产额略高；</li>
+        <li>晶体取向：单晶样品中，电子的“通道效应”会影响散射概率，导致背散射电子产额出现各向异性。</li>
+    </ul>
+
+    <h2>四、背散射电子成像的特点</h2>
+    <ul>
+        <li><strong>成分衬度强</strong>：可直观区分不同原子序数的元素区域，是SEM成分分析的核心信号；</li>
+        <li><strong>分辨率低</strong>：因产生深度深（100~1000nm），成像分辨率约50~100nm，远低于二次电子（1~3nm）；</li>
+        <li><strong>穿透能力强</strong>：可穿透样品表面的薄氧化层/污染层，反映样品内部成分；</li>
+        <li><strong>样品损伤略大</strong>：高能电子束对样品的轰击损伤比二次电子成像更明显。</li>
+    </ul>
+
+    <h2>五、背散射电子（BSE）vs 二次电子（SE）核心对比</h2>
+    <table>
+        <tr>
+            <th>特征</th>
+            <th>背散射电子（BSE）</th>
+            <th>二次电子（SE）</th>
+        </tr>
+        <tr>
+            <td>能量</td>
+            <td>高（keV级），接近入射电子能量</td>
+            <td>低（&lt;50eV）</td>
+        </tr>
+        <tr>
+            <td>产生深度</td>
+            <td>深（100~1000nm）</td>
+            <td>浅（0~10nm）</td>
+        </tr>
+        <tr>
+            <td>核心影响因素</td>
+            <td>样品原子序数（Z）</td>
+            <td>样品表面倾斜角度</td>
+        </tr>
+        <tr>
+            <td>核心作用</td>
+            <td>成分分析、原子序数衬度</td>
+            <td>形貌分析、高分辨率成像</td>
+        </tr>
+        <tr>
+            <td>分辨率</td>
+            <td>低（50~100nm）</td>
+            <td>高（1~3nm）</td>
+        </tr>
+        <tr>
+            <td>成像衬度</td>
+            <td>成分衬度为主，形貌衬度弱</td>
+            <td>形貌衬度为主，无成分衬度</td>
+        </tr>
+    </table>
+
+    <h2>六、背散射电子的典型应用场景</h2>
+    <ul>
+        <li>合金材料的相分布分析（如不锈钢中的Cr/Fe相、铝合金中的第二相）；</li>
+        <li>复合材料的组分分布观察（如陶瓷基复合材料中的增强相/基体相）；</li>
+        <li>锂电池电极的元素分布检测（如正极颗粒与导电剂的区分）；</li>
+        <li>样品表面污染层/氧化层下的基底成分分析；</li>
+        <li>矿物/岩石的物相鉴定（不同矿物原子序数差异导致的衬度区分）。</li>
+    </ul>
+
+    <h2>七、学习小结</h2>
+    <ul>
+        <li>背散射电子的核心价值是<strong>成分分析</strong>，二次电子的核心价值是<strong>形貌分析</strong>，二者互补；</li>
+        <li>原子序数是影响背散射电子产额的最关键因素，可通过衬度明暗快速判断样品成分差异；</li>
+        <li>背散射电子成像分辨率低，需结合二次电子成像，兼顾成分与形貌分析。</li>
+    </ul>
+</body>
+</html>

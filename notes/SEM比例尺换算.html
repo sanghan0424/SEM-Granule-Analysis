@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM比例尺换算学习笔记 | 2026-02-21</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #17a2b8;
+        }
+        .header h1 {
+            color: #2c3e50;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+        .date {
+            color: #666;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        h2 {
+            color: #17a2b8;
+            margin: 25px 0 12px 0;
+            padding-left: 10px;
+            border-left: 4px solid #17a2b8;
+            font-size: 20px;
+        }
+        h3 {
+            color: #34495e;
+            margin: 18px 0 8px 0;
+            font-size: 17px;
+        }
+        p {
+            margin: 10px 0;
+            text-indent: 2em;
+        }
+        ul, ol {
+            padding-left: 40px;
+            margin: 10px 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .formula {
+            background-color: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .example {
+            background-color: #fff8e1;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+            border-radius: 0 4px 4px 0;
+        }
+        .highlight {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SEM比例尺换算学习笔记</h1>
+        <div class="date">2026年02月21日 星期三</div>
+    </div>
+
+    <h2>一、换算核心公式（必记）</h2>
+    <div class="formula">
+        像素尺寸 × 比例尺 = 实际物理尺寸
+    </div>
+    <ul>
+        <li>公式变形：<strong>实际物理尺寸 ÷ 像素尺寸 = 比例尺</strong>；</li>
+        <li>比例尺定义：图像中1个像素对应的实际物理长度（如 100nm/像素、1μm/像素）；</li>
+        <li>单位原则：换算全程保持单位统一（nm/μm/mm 不可混用）。</li>
+    </ul>
+
+    <h2>二、基础换算示例（易理解）</h2>
+    <div class="example">
+        <strong>示例1：已知比例尺算实际尺寸</strong><br>
+        条件：SEM图标注「1像素=100nm」，某颗粒在图中占20像素；<br>
+        计算：20 像素 × 100 nm/像素 = 2000 nm = <span class="highlight">2 μm</span>；<br>
+        说明：结果换算为μm更易读（1 μm = 1000 nm）。
+    </div>
+    <div class="example">
+        <strong>示例2：已知实际尺寸算像素占比</strong><br>
+        条件：SEM图比例尺「1 μm/像素」，某颗粒实际尺寸5 μm；<br>
+        计算：5 μm ÷ 1 μm/像素 = <span class="highlight">5 像素</span>；<br>
+        说明：用于验证图像中颗粒的像素标注是否准确。
+    </div>
+
+    <h2>三、实操注意事项（避坑关键）</h2>
+    <ol>
+        <li><strong>以图像标注为准</strong>：必须参考SEM图上的比例尺（如「10.0 μm」「300μm」），禁止凭经验估算；</li>
+        <li><strong>统一单位</strong>：换算前将所有单位转为同一量级（如把nm转为μm），避免小数点错误；</li>
+        <li><strong>单图单独换算</strong>：不同SEM图的放大倍数/比例尺不同，不可用A图的比例尺算B图的颗粒尺寸；</li>
+        <li><strong>优先高分辨率图</strong>：低分辨率图（<1000×800像素）的像素尺寸误差大，会导致换算结果偏差；</li>
+        <li><strong>记录换算过程</strong>：实验记录中需写明「像素数+比例尺+实际尺寸」，便于后续复核。</li>
+    </ol>
+
+    <h2>四、项目实操场景（结合03.jpg/04.jpg）</h2>
+    <ul>
+        <li><strong>03.jpg（PMMA颗粒图）</strong>：比例尺标注「10.0 μm」，需先测量颗粒在图中的像素数，再用公式计算实际尺寸；</li>
+        <li><strong>04.jpg（球形颗粒图）</strong>：比例尺标注「300μm」，换算时注意「300μm=0.3mm」，避免单位量级混淆；</li>
+        <li><strong>误差控制</strong>：同一颗粒多次测量像素数（3次），取平均值后再换算，减少人为误差。</li>
+    </ul>
+
+    <h2>五、常见错误与解决</h2>
+    <ul>
+        <li>错误1：把「100nm/像素」误算为「100μm/像素」→ 解决：核对图像比例尺的单位（nm/μm）；</li>
+        <li>错误2：用A图比例尺算B图 → 解决：每张图单独记录比例尺，标注在文件名旁（如03.jpg_10μm）；</li>
+        <li>错误3：未统一单位 → 解决：换算前写清单位，如「20像素 × 0.1μm/像素 = 2μm」（100nm=0.1μm）。</li>
+    </ul>
+
+    <h2>六、学习小结</h2>
+    <p>SEM比例尺换算的核心是「像素尺寸×比例尺=实际物理尺寸」，关键在于<strong>精准读取图像比例尺</strong>和<strong>统一单位</strong>；在项目中需为每张SEM图（03/04.jpg）单独记录比例尺，测量颗粒像素数后再换算，确保数据准确。</p>
+</body>
+</html>
