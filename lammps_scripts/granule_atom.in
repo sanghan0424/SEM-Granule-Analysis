@@ -1,0 +1,27 @@
+# LAMMPS基础脚本：模拟2种原子类型（对应SEM亮/暗颗粒）
+units           metal
+atom_style      atomic
+
+# 创建模拟盒子（10x10x10）
+region          box block 0 10 0 10 0 10
+create_box      2 box  # 2种原子类型（1=亮颗粒，2=暗颗粒）
+
+# 为两种原子类型设置质量（对应SEM亮/暗颗粒）
+mass 1 196.97  # 原子类型1：Au（金，对应亮颗粒thick_granule.jpg）
+mass 2 12.01   # 原子类型2：C（碳，对应暗颗粒thin_granule.jpg）
+
+# 创建原子：类型1（亮颗粒）、类型2（暗颗粒）
+create_atoms    1 random 50 42 box  # 50个类型1原子
+create_atoms    2 random 30 43 box  # 30个类型2原子
+
+# 定义原子运动规则（NVE系综）
+fix 1 all nve
+
+# 保存模拟数据
+dump            1 all atom 100 granule_atom.lammpstrj
+dump_modify     1 sort id
+
+# 运行100步模拟
+run             100
+
+print           "✅ LAMMPS模拟完成！数据保存至lammps_scripts/granule_atom.lammpstrj"
